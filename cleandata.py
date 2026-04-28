@@ -659,17 +659,4 @@ def run_cli_excel_mode() -> None:
 
 
 if __name__ == "__main__":
-    mode = "streamlit"
-    if len(sys.argv) > 1:
-        mode = sys.argv[1].strip().lower()
-
-    if mode in {"excel", "cli"}:
-        run_cli_excel_mode()
-    else:
-        streamlit_child = os.environ.get("CLEANDATA_STREAMLIT_CHILD") == "1"
-        if streamlit_child:
-            # Child process under streamlit run -> render the app.
-            run_streamlit_app()
-        else:
-            # Normal python execution -> launch Streamlit once.
-            launch_streamlit_server()
+    run_streamlit_app()
